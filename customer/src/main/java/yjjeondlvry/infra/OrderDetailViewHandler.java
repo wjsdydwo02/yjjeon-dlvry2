@@ -28,11 +28,11 @@ public class OrderDetailViewHandler {
             OrderDetail orderDetail = new OrderDetail();
             // view 객체에 이벤트의 Value 를 set 함
             orderDetail.setId(menuOrdered.getId());
-            orderDetail.setOrderStatus(주문준비중);
             orderDetail.setShopName(menuOrdered.getShopName());
             orderDetail.setShopId(menuOrdered.getShopId());
             orderDetail.setOrderDt(menuOrdered.getOrderDt());
             orderDetail.setMenuLst(menuOrdered.getMenuLst());
+            orderDetail.setOrderStatus("주문준비중");
             // view 레파지 토리에 save
             orderDetailRepository.save(orderDetail);
         } catch (Exception e) {
