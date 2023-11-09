@@ -21,6 +21,7 @@
             <String label="MenuLst" v-model="value.menuLst" :editMode="editMode" :inputUI="''"/>
             <String label="ShopAddress" v-model="value.shopAddress" :editMode="editMode" :inputUI="''"/>
             <String label="CustAddress" v-model="value.custAddress" :editMode="editMode" :inputUI="''"/>
+            <String label="DeliveryStatus" v-model="value.deliveryStatus" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

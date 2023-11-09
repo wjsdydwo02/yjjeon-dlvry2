@@ -20,6 +20,9 @@
             <div>
                 <String label="CustAddress" v-model="item.custAddress" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <String label="DeliveryStatus" v-model="item.deliveryStatus" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

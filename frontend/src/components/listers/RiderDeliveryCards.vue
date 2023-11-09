@@ -114,6 +114,7 @@
                 'menuLst': '',
                 'shopAddress': '',
                 'custAddress': '',
+                'deliveryStatus': '',
             }
         },
         methods:{

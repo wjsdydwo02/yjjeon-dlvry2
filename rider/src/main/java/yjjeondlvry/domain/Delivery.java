@@ -30,6 +30,8 @@ public class Delivery {
 
     private String custAddress;
 
+    private String deliveryStatus;
+
     @PostPersist
     public void onPostPersist() {
         DeliveryReserved deliveryReserved = new DeliveryReserved(this);

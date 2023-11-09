@@ -42,7 +42,7 @@
                     text
                     @click="save"
                 >
-                    ShopOrderStatusChange
+                저장
                 </v-btn>
                 <v-btn
                     color="primary"
@@ -71,6 +71,30 @@
                 @click="takeOrder"
             >
                 TakeOrder
+            </v-btn>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="notTakeOrder"
+            >
+                NotTakeOrder
+            </v-btn>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="menuPrepareStart"
+            >
+                MenuPrepareStart
+            </v-btn>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="menuPrepareComplete"
+            >
+                MenuPrepareComplete
             </v-btn>
         </v-card-actions>
 
@@ -210,6 +234,63 @@
                 try {
                     if(!this.offline) {
                         var temp = await axios.put(axios.fixUrl(this.value._links['takeorder'].href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            async notTakeOrder() {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['nottakeorder'].href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            async menuPrepareStart() {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['m'].href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            async menuPrepareComplete() {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['menupreparecomplete'].href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }

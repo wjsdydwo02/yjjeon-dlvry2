@@ -18,4 +18,5 @@ public class MenuOrdered extends AbstractEvent {
     private String menuLst;
     private String orderStatus;
     private String deliveryStatus;
+    private Date orderDt;
 }
