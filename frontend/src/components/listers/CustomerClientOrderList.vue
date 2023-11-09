@@ -138,7 +138,7 @@
                 'menuLst': '',
                 'orderStatus': '',
                 'deliveryStatus': '',
-                'orderDt': '2023-11-09',
+                'orderDt': '2023-11-10',
             }
         },
         methods: {

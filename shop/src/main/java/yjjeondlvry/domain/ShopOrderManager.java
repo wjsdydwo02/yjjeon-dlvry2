@@ -8,9 +8,9 @@ import lombok.Data;
 
 //<<< EDA / CQRS
 @Entity
-@Table(name = "MenuDetail_table")
+@Table(name = "ShopOrderManager_table")
 @Data
-public class MenuDetail {
+public class ShopOrderManager {
 
     @Id
     //@GeneratedValue(strategy=GenerationType.AUTO)

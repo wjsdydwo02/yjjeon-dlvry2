@@ -2,7 +2,7 @@
 
     <v-data-table
         :headers="headers"
-        :items="menuDetail"
+        :items="shopOrderManager"
         :items-per-page="5"
         class="elevation-1"
     ></v-data-table>
@@ -13,7 +13,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'MenuDetailView',
+        name: 'ShopOrderManagerView',
         props: {
             value: Object,
             editMode: Boolean,
@@ -23,14 +23,14 @@
             headers: [
                 { text: "id", value: "id" },
             ],
-            menuDetail : [],
+            shopOrderManager : [],
         }),
           async created() {
-            var temp = await axios.get(axios.fixUrl('/menuDetails'))
+            var temp = await axios.get(axios.fixUrl('/shopOrderManagers'))
 
-            temp.data._embedded.menuDetails.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            temp.data._embedded.shopOrderManagers.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
 
-            this.menuDetail = temp.data._embedded.menuDetails;
+            this.shopOrderManager = temp.data._embedded.shopOrderManagers;
         },
         methods: {
         }
