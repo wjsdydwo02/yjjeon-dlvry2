@@ -15,4 +15,5 @@ public class DeliveryReserved extends AbstractEvent {
     private String menuLst;
     private String shopAddress;
     private String custAddress;
+    private String deliveryStatus;
 }

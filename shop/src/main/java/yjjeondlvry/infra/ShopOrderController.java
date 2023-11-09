@@ -42,5 +42,76 @@ public class ShopOrderController {
         shopOrderRepository.save(shopOrder);
         return shopOrder;
     }
+
+    @RequestMapping(
+        value = "shopOrders/{id}/nottakeorder",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public ShopOrder notTakeOrder(
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println("##### /shopOrder/notTakeOrder  called #####");
+        Optional<ShopOrder> optionalShopOrder = shopOrderRepository.findById(
+            id
+        );
+
+        optionalShopOrder.orElseThrow(() -> new Exception("No Entity Found"));
+        ShopOrder shopOrder = optionalShopOrder.get();
+        shopOrder.notTakeOrder();
+
+        shopOrderRepository.save(shopOrder);
+        return shopOrder;
+    }
+
+    @RequestMapping(
+        value = "shopOrders/{id}/m",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public ShopOrder menuPrepareStart(
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println("##### /shopOrder/menuPrepareStart  called #####");
+        Optional<ShopOrder> optionalShopOrder = shopOrderRepository.findById(
+            id
+        );
+
+        optionalShopOrder.orElseThrow(() -> new Exception("No Entity Found"));
+        ShopOrder shopOrder = optionalShopOrder.get();
+        shopOrder.menuPrepareStart();
+
+        shopOrderRepository.save(shopOrder);
+        return shopOrder;
+    }
+
+    @RequestMapping(
+        value = "shopOrders/{id}/menupreparecomplete",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public ShopOrder menuPrepareComplete(
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println(
+            "##### /shopOrder/menuPrepareComplete  called #####"
+        );
+        Optional<ShopOrder> optionalShopOrder = shopOrderRepository.findById(
+            id
+        );
+
+        optionalShopOrder.orElseThrow(() -> new Exception("No Entity Found"));
+        ShopOrder shopOrder = optionalShopOrder.get();
+        shopOrder.menuPrepareComplete();
+
+        shopOrderRepository.save(shopOrder);
+        return shopOrder;
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

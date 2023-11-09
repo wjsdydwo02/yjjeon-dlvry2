@@ -6,9 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import yjjeondlvry.ShopApplication;
-import yjjeondlvry.domain.MenuPrepareCompleted;
-import yjjeondlvry.domain.MenuPrepareStarted;
-import yjjeondlvry.domain.OrderNotTaked;
 
 @Entity
 @Table(name = "ShopOrder_table")
@@ -36,19 +33,11 @@ public class ShopOrder {
 
     private String custAddress;
 
+    @PostPersist
+    public void onPostPersist() {}
+
     @PreUpdate
-    public void onPreUpdate() {
-        MenuPrepareStarted menuPrepareStarted = new MenuPrepareStarted(this);
-        menuPrepareStarted.publishAfterCommit();
-
-        MenuPrepareCompleted menuPrepareCompleted = new MenuPrepareCompleted(
-            this
-        );
-        menuPrepareCompleted.publishAfterCommit();
-
-        OrderNotTaked orderNotTaked = new OrderNotTaked(this);
-        orderNotTaked.publishAfterCommit();
-    }
+    public void onPreUpdate() {}
 
     public static ShopOrderRepository repository() {
         ShopOrderRepository shopOrderRepository = ShopApplication.applicationContext.getBean(
@@ -63,6 +52,35 @@ public class ShopOrder {
 
         OrderTaked orderTaked = new OrderTaked(this);
         orderTaked.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void notTakeOrder() {
+        //implement business logic here:
+
+        OrderNotTaked orderNotTaked = new OrderNotTaked(this);
+        orderNotTaked.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void menuPrepareStart() {
+        //implement business logic here:
+
+        MenuPrepareStarted menuPrepareStarted = new MenuPrepareStarted(this);
+        menuPrepareStarted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void menuPrepareComplete() {
+        //implement business logic here:
+
+        MenuPrepareCompleted menuPrepareCompleted = new MenuPrepareCompleted(
+            this
+        );
+        menuPrepareCompleted.publishAfterCommit();
     }
 
     //>>> Clean Arch / Port Method

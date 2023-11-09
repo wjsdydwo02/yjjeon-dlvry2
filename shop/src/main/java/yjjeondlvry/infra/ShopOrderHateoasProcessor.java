@@ -17,6 +17,22 @@ public class ShopOrderHateoasProcessor
                 .of(model.getRequiredLink("self").getHref() + "/takeorder")
                 .withRel("takeorder")
         );
+        model.add(
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/nottakeorder")
+                .withRel("nottakeorder")
+        );
+        model.add(
+            Link.of(model.getRequiredLink("self").getHref() + "/m").withRel("m")
+        );
+        model.add(
+            Link
+                .of(
+                    model.getRequiredLink("self").getHref() +
+                    "/menupreparecomplete"
+                )
+                .withRel("menupreparecomplete")
+        );
 
         return model;
     }

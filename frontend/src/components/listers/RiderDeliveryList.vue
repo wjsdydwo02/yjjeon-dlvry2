@@ -46,6 +46,7 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -55,6 +56,7 @@
                             [ MenuLst :  {{data.menuLst }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ShopAddress :  {{data.shopAddress }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CustAddress :  {{data.custAddress }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ DeliveryStatus :  {{data.deliveryStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -127,6 +129,7 @@
                 'menuLst': '',
                 'shopAddress': '',
                 'custAddress': '',
+                'deliveryStatus': '',
             }
         },
         methods: {

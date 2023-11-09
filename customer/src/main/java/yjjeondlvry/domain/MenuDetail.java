@@ -10,9 +10,4 @@ import lombok.Data;
 @Entity
 @Table(name = "MenuDetail_table")
 @Data
-public class MenuDetail {
-
-    @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-}
+public class MenuDetail {}

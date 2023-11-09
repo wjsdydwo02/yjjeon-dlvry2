@@ -34,7 +34,7 @@ mvn spring-boot:run
 ## Test by API
 - rider
 ```
- http :8088/deliveries id="id" orderId="orderId" riderId="riderId" menuLst="MenuLst" shopAddress="shopAddress" custAddress="custAddress" 
+ http :8088/deliveries id="id" orderId="orderId" riderId="riderId" menuLst="MenuLst" shopAddress="shopAddress" custAddress="custAddress" deliveryStatus="deliveryStatus" 
 ```
 - customer
 ```

@@ -21,7 +21,6 @@
         },
         data: () => ({
             headers: [
-                { text: "id", value: "id" },
             ],
             orderManage : [],
         }),

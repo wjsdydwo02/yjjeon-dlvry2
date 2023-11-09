@@ -72,6 +72,7 @@
                     { text: "menuLst", value: "menuLst" },
                     { text: "shopAddress", value: "shopAddress" },
                     { text: "custAddress", value: "custAddress" },
+                    { text: "deliveryStatus", value: "deliveryStatus" },
                 ],
             delivery : [],
             newValue: {},
@@ -94,6 +95,7 @@
                 'menuLst': '',
                 'shopAddress': '',
                 'custAddress': '',
+                'deliveryStatus': '',
             }
         },
         methods: {
