@@ -23,11 +23,9 @@ public class ShopOrder {
 
     private String orderStatus;
 
-    private String deliverystatus;
+    private String deliveryStatus;
 
-    private String orderDt;
-
-    private String drliveryStatus;
+    private Date orderDt;
 
     private String shopAddress;
 
@@ -49,6 +47,7 @@ public class ShopOrder {
     //<<< Clean Arch / Port Method
     public void takeOrder() {
         //implement business logic here:
+        this.setOrderStatus("주문 확인됨");
 
         OrderTaked orderTaked = new OrderTaked(this);
         orderTaked.publishAfterCommit();
@@ -58,6 +57,7 @@ public class ShopOrder {
     //<<< Clean Arch / Port Method
     public void notTakeOrder() {
         //implement business logic here:
+        this.setOrderStatus("상점에서 주문 취소함");
 
         OrderNotTaked orderNotTaked = new OrderNotTaked(this);
         orderNotTaked.publishAfterCommit();
@@ -67,6 +67,8 @@ public class ShopOrder {
     //<<< Clean Arch / Port Method
     public void menuPrepareStart() {
         //implement business logic here:
+        this.setOrderStatus("메뉴 준비중");
+
 
         MenuPrepareStarted menuPrepareStarted = new MenuPrepareStarted(this);
         menuPrepareStarted.publishAfterCommit();
@@ -76,6 +78,7 @@ public class ShopOrder {
     //<<< Clean Arch / Port Method
     public void menuPrepareComplete() {
         //implement business logic here:
+        this.setOrderStatus("배송 준비중");
 
         MenuPrepareCompleted menuPrepareCompleted = new MenuPrepareCompleted(
             this
@@ -95,16 +98,16 @@ public class ShopOrder {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process*/
         
-        repository().findById(menuOrderCancled.get???()).ifPresent(shopOrder->{
+        repository().findByClientOrderId(menuOrderCancled.getId()).ifPresent(shopOrder->{
             
-            shopOrder // do something
+            shopOrder.setOrderStatus("고객이 주문을 취소했습니다");// do something
             repository().save(shopOrder);
 
 
          });
-        */
+        /**/
 
     }
 
@@ -113,10 +116,18 @@ public class ShopOrder {
     public static void orderRequset(MenuOrdered menuOrdered) {
         //implement business logic here:
 
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         ShopOrder shopOrder = new ShopOrder();
+        shopOrder.setClientOrderId(menuOrdered.getId());
+        shopOrder.setMenuLst(menuOrdered.getMenuLst());
+        shopOrder.setOrderDt(menuOrdered.getOrderDt());
+        shopOrder.setCustAddress(menuOrdered.getAddress());
+        shopOrder.setOrderStatus("주문 확인중");
+
         repository().save(shopOrder);
 
+        /*
+         * 
         */
 
         /** Example 2:  finding and process
@@ -143,16 +154,16 @@ public class ShopOrder {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process*/
         
-        repository().findById(deliveryReserved.get???()).ifPresent(shopOrder->{
+        repository().findByClientOrderId(deliveryReserved.getOrderId()).ifPresent(shopOrder->{
             
-            shopOrder // do something
+            shopOrder.setDeliveryStatus("배송기사 매칭됨"); // do something
             repository().save(shopOrder);
 
 
          });
-        */
+        /**/
 
     }
     //>>> Clean Arch / Port Method

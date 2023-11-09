@@ -38,7 +38,6 @@ public class ShopOrderController {
         optionalShopOrder.orElseThrow(() -> new Exception("No Entity Found"));
         ShopOrder shopOrder = optionalShopOrder.get();
         shopOrder.takeOrder();
-
         shopOrderRepository.save(shopOrder);
         return shopOrder;
     }

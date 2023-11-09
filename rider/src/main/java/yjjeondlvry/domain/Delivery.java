@@ -32,6 +32,7 @@ public class Delivery {
 
     private String deliveryStatus;
 
+    /*/
     @PostPersist
     public void onPostPersist() {
         DeliveryReserved deliveryReserved = new DeliveryReserved(this);
@@ -43,9 +44,10 @@ public class Delivery {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
         deliveryStarted.publishAfterCommit();
     }
-
+    */
     @PreRemove
     public void onPreRemove() {
+        this.setDeliveryStatus("배달 완료됨")
         DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
         deliveryCompleted.publishAfterCommit();
     }
@@ -63,11 +65,16 @@ public class Delivery {
     ) {
         //implement business logic here:
 
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         Delivery delivery = new Delivery();
+        delivery.setCustAddress(menuPrepareCompleted.getCustAddress());
+        delivery.setMenuLst(menuPrepareCompleted.getMenuLst());
+        delivery.setOrderId(menuPrepareCompleted.getClientOrderId());
+        delivery.setDeliveryStatus("배달원매칭중");
+
         repository().save(delivery);
 
-        */
+        
 
         /** Example 2:  finding and process
         
@@ -80,6 +87,21 @@ public class Delivery {
          });
         */
 
+    }
+
+    public void deliveryReserve() {
+        this.setDeliveryStatus("배달원 배정됨");
+
+        DeliveryReserved deliveryReserved = new DeliveryReserved(this);
+        deliveryReserved.publishAfterCommit();
+    }
+
+    public void startdelivery() {
+
+        this.setDeliveryStatus("배달 출발함");
+
+        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        deliveryStarted.publishAfterCommit();
     }
     //>>> Clean Arch / Port Method
 

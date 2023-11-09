@@ -10,4 +10,8 @@ import lombok.Data;
 @Entity
 @Table(name = "OrderManage_table")
 @Data
-public class OrderManage {}
+public class OrderManage {
+    @Id
+    //@GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+}

@@ -19,5 +19,55 @@ public class DeliveryController {
 
     @Autowired
     DeliveryRepository deliveryRepository;
+
+    @RequestMapping(
+        value = "deliveries/{id}/deliveryreserve",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Delivery deliveryReserve (
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println(
+            "##### /deliveries/deliveryreserve  called #####"
+        );
+        Optional<Delivery> optionalDelivery = deliveryRepository.findById(
+            id
+        );
+
+        optionalDelivery.orElseThrow(() -> new Exception("No Entity Found"));
+        Delivery delivery = optionalDelivery.get();
+        delivery.deliveryReserve();
+
+        deliveryRepository.save(delivery);
+        return delivery;
+    }
+
+    @RequestMapping(
+        value = "deliveries/{id}/startdelivery",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Delivery startdelivery (
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println(
+            "##### /deliveries/startdelivery  called #####"
+        );
+        Optional<Delivery> optionalDelivery = deliveryRepository.findById(
+            id
+        );
+
+        optionalDelivery.orElseThrow(() -> new Exception("No Entity Found"));
+        Delivery delivery = optionalDelivery.get();
+        delivery.startdelivery();
+
+        deliveryRepository.save(delivery);
+        return delivery;
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
