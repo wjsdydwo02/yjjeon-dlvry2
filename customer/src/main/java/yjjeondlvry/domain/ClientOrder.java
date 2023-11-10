@@ -58,24 +58,15 @@ public class ClientOrder {
 
     //<<< Clean Arch / Port Method
     public static void orderStatusChange(OrderTaked orderTaked) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderTaked.get???()).ifPresent(clientOrder->{
+        repository().findById(orderTaked.getClientOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setOrderStatus("주문 확인됨");// do something
             repository().save(clientOrder);
 
 
          });
-        */
+
 
     }
 
@@ -84,22 +75,14 @@ public class ClientOrder {
     public static void orderStatusChange(OrderNotTaked orderNotTaked) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderNotTaked.get???()).ifPresent(clientOrder->{
+        repository().findById(orderNotTaked.getClientOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setOrderStatus("가게 사정으로 주문 취소됨");// do something
             repository().save(clientOrder);
 
 
          });
-        */
+
 
     }
 
@@ -110,22 +93,14 @@ public class ClientOrder {
     ) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(menuPrepareStarted.get???()).ifPresent(clientOrder->{
+        repository().findById(menuPrepareStarted.getClientOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setOrderStatus("메뉴 준비중");// do something
             repository().save(clientOrder);
 
 
          });
-        */
+
 
     }
 
@@ -134,24 +109,15 @@ public class ClientOrder {
     public static void orderStatusChange(
         MenuPrepareCompleted menuPrepareCompleted
     ) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
         
-        repository().findById(menuPrepareCompleted.get???()).ifPresent(clientOrder->{
+        repository().findById(menuPrepareCompleted.getClientOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setOrderStatus("메뉴 준비됨"); // do something
             repository().save(clientOrder);
 
 
          });
-        */
 
     }
 
@@ -160,22 +126,13 @@ public class ClientOrder {
     public static void deliveryStatusChange(DeliveryStarted deliveryStarted) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(deliveryStarted.get???()).ifPresent(clientOrder->{
+        repository().findById(deliveryStarted.getOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setDeliveryStatus("배달중"); // do something
             repository().save(clientOrder);
 
 
          });
-        */
 
     }
 
@@ -184,24 +141,15 @@ public class ClientOrder {
     public static void deliveryStatusChange(
         DeliveryCompleted deliveryCompleted
     ) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
-        ClientOrder clientOrder = new ClientOrder();
-        repository().save(clientOrder);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(deliveryCompleted.get???()).ifPresent(clientOrder->{
+        repository().findById(deliveryCompleted.getOrderId()).ifPresent(clientOrder->{
             
-            clientOrder // do something
+            clientOrder.setDeliveryStatus("배달 완료됨"); // do something
             repository().save(clientOrder);
 
 
          });
-        */
+
 
     }
     //>>> Clean Arch / Port Method

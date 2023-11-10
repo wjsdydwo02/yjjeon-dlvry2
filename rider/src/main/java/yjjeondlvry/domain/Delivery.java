@@ -47,7 +47,7 @@ public class Delivery {
     */
     @PreRemove
     public void onPreRemove() {
-        this.setDeliveryStatus("배달 완료됨")
+        this.setDeliveryStatus("배달 완료됨");
         DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
         deliveryCompleted.publishAfterCommit();
     }
