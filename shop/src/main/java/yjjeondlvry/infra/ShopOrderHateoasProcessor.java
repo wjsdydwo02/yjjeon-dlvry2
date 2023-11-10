@@ -23,7 +23,7 @@ public class ShopOrderHateoasProcessor
                 .withRel("nottakeorder")
         );
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/m").withRel("m")
+            Link.of(model.getRequiredLink("self").getHref() + "/menuPrepareStart").withRel("menuPrepareStart")
         );
         model.add(
             Link
